@@ -13,7 +13,7 @@ from keras.layers import Dense
 from sklearn.model_selection import train_test_split
 
 from sklearn.feature_extraction.text import TfidfVectorizer
-import matplotlib.pyplot as plt
+
 
 # Importing the emails with help of the gmail api
 SCOPES = ['https://www.googleapis.com/auth/gmail.readonly']
@@ -106,10 +106,10 @@ news=0
 newstext=[]
 game=0
 gametext=[]
-print('-----------------------------------------------')
+
 for i in predictions:
   z=z+1
-  print(f'{i[0]} for {Xt_train[z-1]}')
+
   
   
   if i <= 0.05:
@@ -136,46 +136,7 @@ for i in predictions:
       news=news+1
 
 
-print('----------------Model_Evaluation-----------------')
-print('curent thresouhold: 0.05 and 0.95')
-print('\n')
-print('Added mails from r/gaming:')
-print('\n')
-for i in gametext:
-  print(i['Message'])
-  print('\n')
-print('Added mails fro r/worldnews:')
-for i in newstext:
-  print(i['Message'])
-  print('\n')
-print('\n')
-print('\n')
-print(f'total number of added emails to list {news+game}')
-print('\n')
-print('\n')
-print(f'total number of r/gaming emails to list {game}')
-print(f'total number of r/worldnews emails to list {news}')
-print(f'total number of emails to list {len(X)+game+news}')
-print('\n')
 
-print('model evaluation:')
-print(f'model accuracy {accuracy_loss[1]}')
-print(f'model Loss {accuracy_loss[0]}')
-print('-----------------------------------------------')
-
-plt.plot(history.history['loss'])
-plt.title('Model loss')
-plt.ylabel('loss')
-plt.xlabel('epoch')
-plt.legend(['train', 'test'], loc='upper right')
-plt.show()
-
-plt.plot(history.history['accuracy'])
-plt.title('Model accuracy')
-plt.ylabel('accuracy')
-plt.xlabel('epoch')
-plt.legend(['train', 'test'], loc='upper right')
-plt.show()
 
 
 
